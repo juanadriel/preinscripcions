@@ -1,4 +1,6 @@
 <?php
 
-echo 'Weaaaa'
+echo 'Weaaaa';
+		
+echo 'no va bien';
 ?>
