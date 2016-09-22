@@ -46,7 +46,16 @@
             return $cursos;
 			
 		}
-        
+        //borrar un curos
+		public static function borrar($id){
+			//conectar con la bdd
+			$conexion = Database::get();
+		
+			//preparar consulta
+			$consulta = "DELETE FROM cursos WHERE id=$id;";
+			$conexion->query($consulta);
+			return $conexion->affected_rows;
+		}
          //recuperar un curso a partir de un id
          public static function getCurso($id){
             //conectar con la bdd

@@ -111,8 +111,26 @@
 		
 		//PROCEDIMIENTO PARA DAR DE BAJA UN CURSO
 		//solicita confirmación
-		public function baja(){				
-		
+		public function eliminar($id){				
+			//comprobar que nos pasan la id
+			if(empty($id))
+				throw new Exception("No s'ha indicat el curs a eliminar");
+			
+				//comprobar si el usuario es administrador
+				$u = Login::getUsuario();
+				if(empty($u) || !$u->admin)
+					throw new Exception ('Només per al administrador');
+					else{
+						//cargamos el modelo
+						$this->load('model/CursoModel.php');
+						
+						CursoModel::borrar($id);
+						//mostrar la vista de éxito
+						$datos = array();
+						$datos['usuario'] = Login::getUsuario();
+						$datos['mensaje'] = 'Curs eliminat correctament';
+						$this->load_view('view/exito.php', $datos);
+					}
 		}
 		
 		//PROCEDIMIENTO PARA LISTAR LOS CURSOS
