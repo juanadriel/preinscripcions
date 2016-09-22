@@ -34,41 +34,43 @@
                     <div id="home" class="tab-pane fade in active">
                        
                         <h3>Dades de registre:</h3>
-                        
-                        <figure>
-                            <img class="imagenactual" src="<?php echo $usuario->imagen;?>" 
-                                alt="<?php echo  $usuario->dni;?>" />
-                        </figure>
-
-                        <div class="form-group">
-                            <label for="dni" class="col-md-2 control-label">Usuari(dni):</label>
-                            <div class="col-md-6">
-                                <input id="dni" class="form-control" type="text" name="dni" required="required" readonly="readonly" value="<?php echo $usuario->dni;?>" />
-                            </div>
+                        <div class=row>
+	                        <figure class="col-md-2">
+	                            <img class="imagenactual imgthumbnail" src="<?php echo $usuario->imagen;?>" 
+	                                alt="<?php echo  $usuario->dni;?>" />
+	                        </figure>
+	                        <div class="col-md-10">
+	
+		                        <div class="form-group">
+		                            <label for="dni" class="col-md-2 control-label">Usuari(dni):</label>
+		                            <div class="col-md-6">
+		                                <input id="dni" class="form-control" type="text" name="dni" required="required" readonly="readonly" value="<?php echo $usuario->dni;?>" />
+		                            </div>
+		                        </div>
+		
+		                        <div class="form-group">
+		                            <label for="email" class="col-md-2 control-label">Correu electrònic:</label>
+		                            <div class="col-md-6">
+		                                <input id="email" class="form-control" type="email" name="email" required="required" value="<?php echo $usuario->email;?>" maxlength="128"/>
+		                            </div>
+		                        </div>
+		
+		                        <div class="form-group">
+		                            <label for="password" class="col-md-2 control-label">Password actual:</label>
+		                            <div class="col-md-6">
+		                                <input id="password" class="form-control" type="password" name="password" required="required" autocomplete="off" value="" />
+		                            </div>
+		                        </div>
+		
+		                        <div class="form-group">
+		                            <label for="password2" class="col-md-2 control-label">Nou password:</label>
+		                            <div class="col-md-6">
+		                                <input id="password2" class="form-control" type="password" name="newpassword" pattern=".{4,32}" title="4 a 32 caracteres" maxlength="32"/>
+		                                <span class="mini">Deixar en blanc per no modificar l'actual</span>
+		                            </div>
+		                        </div>
+	                        </div>  
                         </div>
-
-                        <div class="form-group">
-                            <label for="email" class="col-md-2 control-label">Correu electrònic:</label>
-                            <div class="col-md-6">
-                                <input id="email" class="form-control" type="email" name="email" required="required" value="<?php echo $usuario->email;?>" maxlength="128"/>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="password" class="col-md-2 control-label">Password actual:</label>
-                            <div class="col-md-6">
-                                <input id="password" class="form-control" type="password" name="password" required="required" autocomplete="off" value="" />
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="password2" class="col-md-2 control-label">Nou password:</label>
-                            <div class="col-md-6">
-                                <input id="password2" class="form-control" type="password" name="newpassword" pattern=".{4,32}" title="4 a 32 caracteres" maxlength="32"/>
-                                <span class="mini">Deixar en blanc per no modificar l'actual</span>
-                            </div>
-                        </div>  
-                        
                     </div>
                     <div id="menu1" class="tab-pane fade ">
                        
