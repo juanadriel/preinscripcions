@@ -25,6 +25,7 @@
                 <li><a data-toggle="tab" href="#menu1">Dades personals</a></li>
                 <li><a data-toggle="tab" href="#menu2">Estudis reglats</a></li>
                 <li><a data-toggle="tab" href="#menu3">Situació laboral</a></li>
+                <li><a data-toggle="tab" href="#menu4">Preincripcions</a></li>
             </ul>
             
             
@@ -147,7 +148,7 @@
                         
                          <div class="form-group">
                             <label for="nivel_estudios" class="col-md-2 control-label">Nivell d'estudis</label>
-                            <div class="col-md-6"> <?php echo $usuario->nivel_estudios;?>
+                            <div class="col-md-6"> 
                                 <select id="nivel_estudios" class="form-control" name="nivel_estudios">
                                     <option <?php if(strcmp($usuario->nivel_estudios, 'Sense estudis') ==0) echo 'selected="selected"';?> value="Sense estudis">Sense estudis</option>
                                     <option <?php if(strcmp($usuario->nivel_estudios, 'Graduat escolar/ESO') ==0) echo 'selected="selected"';?> value="Graduat escolar/ESO">Graduat escolar/ESO</option>
@@ -189,8 +190,10 @@
                         <div class="form-group">
                             <label class="col-md-2 control-label">Situació laboral</label>
                             <div class="col-md-6 ">
-                                <input id="en_activo" class="form-control" type="radio" name="en_activo" value="1" <?php if($usuario->en_activo ==1) echo 'checked';?> />En actiu
-                                <input id="atur" class="form-control" type="radio" name="en_activo" value="0" <?php if($usuario->en_activo ==0) echo 'checked';?> />A l'atur
+                            	<div class="radio">
+	                                En actiu<input id="en_activo"  type="radio" name="en_activo" value="1" <?php if($usuario->en_activo ==1) echo 'checked';?> />
+	                                A l'atur<input id="atur" type="radio" name="en_activo" value="0" <?php if($usuario->en_activo ==0) echo 'checked';?> />
+                                </div>
                             </div>
                     
                         </div>
@@ -228,10 +231,42 @@
 
                         <label></label>
                         <input type="submit" name="modificar" value="modificar"/><br/>
-                    
-                        
+                                            
                     </div>
-                    
+                    <div id="menu4" class="tab-pane fade">
+                    <h2>Este es el bueno</h2>
+                    	<div class="row">
+			                <div class="table-responsive">
+			                    <table class="table table-striped table-bordered table-hover">
+				                    <tr class="info">	               
+				                       <th>Nom</th>
+				                       <th>Hores</th>
+				                       <th>Data Inici</th>
+				                       <th>Tipologia</th>	               
+				                       <th>Àrea Formativa</th>
+				                       <th>Preu</th>
+				                     </tr>	
+							        <?php 			                    	
+									for($i=0; $i <count($preinscripciones); $i++){
+								                    	
+							         ?>
+			                        <tr>
+			                            <td><?php echo $preinscripciones[$i]->nombre;?></td>	                    
+			                            <td><?php echo $preinscripciones[$i]->horas;?></td>
+			                            <td><?php echo $preinscripciones[$i]->inicio;?></td>                     
+			                            <td><?php echo $preinscripciones[$i]->tipologia;?></td>                     
+			                            <td><?php echo $preinscripciones[$i]->area_formativa;?></td>                     
+			                            <td><?php echo $preinscripciones[$i]->precio;?></td>
+			                                                 
+		                            <?php			                    		
+			                    	}			                    
+		                    		?>	
+			                        </tr>
+			
+			                    </table>
+			                </div>
+			            </div>
+                    </div>
                 </form>
              
 				

@@ -90,8 +90,9 @@
                         ?>		   
 
                      </tr>	
-                    <?php 
+                    <?php                    
                     foreach($cursos as $curso){
+                    	
                         ?>
                         <tr>
                             <td><?php echo $curso->nombre;?></td>	                    

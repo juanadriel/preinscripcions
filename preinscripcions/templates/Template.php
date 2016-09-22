@@ -47,7 +47,7 @@
 			?>			
 			<form method="post" id="logout" class="navbar-form navbar-right">
 				<div class="form-group">
-					<a href="index.php?controlador=Usuario&operacion=modificacion" title="modificar datos">
+					<a href="index.php/Usuario/modificacion" title="modificar datos">
 						<?php echo !empty($usuario->nombre)?$usuario->nombre:'Usuario';?></a>					
 					<button name="logout" value="logout" class="btn btn-primary">Logout</button>
 				</div>	

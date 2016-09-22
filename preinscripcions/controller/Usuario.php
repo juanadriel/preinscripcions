@@ -95,8 +95,10 @@
 			if(empty($_POST['modificar'])){
 				
 				//mostramos la vista del formulario
+				$u = Login::getUsuario();
 				$datos = array();
-				$datos['usuario'] = Login::getUsuario();
+				$datos['usuario'] = $u;
+				$datos['preinscripciones'] = UsuarioModel::getPreinscripciones($u->id);
 				$datos['max_image_size'] = Config::get()->user_image_max_size;
 				$this->load_view('view/usuarios/modificacion.php', $datos);
 					

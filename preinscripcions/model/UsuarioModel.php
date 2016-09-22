@@ -2,7 +2,7 @@
 	class UsuarioModel{
 		//PROPIEDADES
 		public $id, $dni='', $password='', $nombre='', $apellido1='', $apellido2='', $fecha_nacimiento='', $direccion='', $cp='', $poblacion='', $telf_movil='', $telf_fijo='', $email='', $nivel_estudios='', $nombre_titulacion='', $otros='', $observaciones='', $en_activo=0, $razon_social='', $puesto_trabajo='', $regimen=0, $activo=0, $clave_activacion='', $admin=0, $imagen='', $timestamp='';
-		public $preinscripciones = array();	
+		//public $preinscripciones = array();	
 		//METODOS
 		//guarda el usuario en la BDD
 		public function guardar(){
@@ -46,24 +46,20 @@
 		
 		
 		//elimina el usuario de la BDD
-        public function getPreinscripciones(){
+        public static function getPreinscripciones($id){            
+            $conexion = Database::get();                        
             
-            $conexion = Database::get();            
-            
-            
-            $consulta = "SELECT c.* FROM cursos c, preinscripciones p WHERE p.id_usuario = $this->id AND p.id_curso = c.id ORDER BY p.timestamp ASC;";
+            $consulta = "SELECT c.* FROM cursos c, preinscripciones p, usuarios u 
+			WHERE u.id = $id AND p.id_curso = c.id AND  u.id= p.id_usuario ORDER BY p.timestamp ASC;";
            
             $resultados = $conexion->query($consulta);   
             
             //$portadas = array();
-            while($linea = $resultados->fetch_array())
-            {
-               $this->preinscripciones[] = $linea;
-            }
+            $linea = $resultados->fetch_array();
             
             $resultados->free();
 			
-            
+            return $linea;
             //return $portadas;
         }
         
@@ -144,8 +140,7 @@
 			$consulta = "SELECT * FROM $user_table WHERE dni='$u';";
 			$resultado = Database::get()->query($consulta);
 			
-			$us = $resultado->fetch_object('UsuarioModel');
-            $us->getPreinscripciones();
+			$us = $resultado->fetch_object('UsuarioModel');            
 			$resultado->free();
 			
 			return $us;
