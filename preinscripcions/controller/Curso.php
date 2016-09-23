@@ -151,6 +151,35 @@
             
             //cargar la vista que muestra el listado
             $this->load_view('view/cursos/listar.php',$datos);            
-        }		
+        }
+        //PROCEDIMIENTO PARA LISTAR LOS USUARIOS PREINSCRITOS EN EL CURSO
+        public function ver($id){
+        	//cargar la vista que muestra el listado        	
+        	//preparar los datos que se le pasaran a la vista
+        	$datos = array();
+        	//usuario activo en el sistema
+        	$datos['usuario'] = Login::getUsuario();
+        	$datos['curso']=CursoModel::getCurso($id);
+        	$this->load_view('view/cursos/detalle.php',$datos);
+        }
+        public function preinscribir($id){       	
+        		$u = Login::getUsuario();
+        		if($u == null)
+        			throw new Exception("Només usuaris registrats poden fer la preinscripció.");
+        		if($u->activo == 1)
+        			throw new Exception("registre d'usuari incomplet, si vols inscriure't completa les dades d'usuari.");        			 
+        		if(CursoModel::preinscribir($id,$u->id));
+        			throw new Exception('Error al fer la preinscripció');
+        			
+        		$datos = array();
+        		//usuario activo en el sistema
+        		$datos['usuario'] = Login::getUsuario();       			
+       			//$datos['ftipologia'] = $ftipologia;
+       			$datos['cursos'] = CursoModel::getCursos();       			
+       			$this->load_view('view/exito.php', $datos);       	
+        		
+        	
+        	
+        }
 	}//fin clase
 ?>

@@ -80,19 +80,19 @@
                        <th>Tipologia</th>	               
                        <th>Àrea Formativa</th>
                        <th>Preu</th>
-                       <?php if(!empty($usuario) && $usuario->admin){
-                           echo '<th>Actiu</th>';
+                       <th>Actiu</th>
+                       <?php if(!empty($usuario) && $usuario->admin){                          
                            echo '<th>Opcions</th>';
                         }
                        ?>
-                       <?php if(empty($usuario->admin))
+                       <?php if(empty($usuario->admin) && !empty($usuario))
+                       
                            echo '<th>Preinscripció</th>';
                         ?>		   
 
                      </tr>	
-                    <?php                    
+                    <?php 
                     foreach($cursos as $curso){
-                    	
                         ?>
                         <tr>
                             <td><?php echo $curso->nombre;?></td>	                    
@@ -100,13 +100,17 @@
                             <td><?php echo $curso->inicio;?></td>                     
                             <td><?php echo $curso->tipologia;?></td>                     
                             <td><?php echo $curso->area_formativa;?></td>                     
-                            <td><?php echo $curso->precio;?></td>                     
+                            <td><?php echo $curso->precio;?></td> 
+                            <?php 
+                            	$foto = ($curso->activo)?'abierto.png':'cerrado.png';
+                            	echo '<td><img class="botones" src="images/style/'.$foto.'"></td>';
+                            ?>  
                             <?php if(!empty($usuario) && $usuario->admin){
-                                echo "<td>$curso->activo</td>"; 
-                                echo '<td><a href="index.php/curso/eliminar/'.$curso->id.'"><img class="botones" src="images/style/delete.png"></a><a href="index.php/curso/edit/'.$curso->id.'"><img class="botones" src="images/style/edit.png"></a>';
+                                echo '<td><a href="index.php/curso/eliminar/'.$curso->id.'"><img class="botones" src="images/style/delete.png"></a><a href="index.php/curso/edit/'.$curso->id.'"><img class="botones" src="images/style/edit.png"></a>
+								<a href="index.php/curso/ver/'.$curso->id.'"><img class="botones" src="images/style/ver.png"></a>';                                
                             }?>
-                            <?php if(empty($usuario->admin))
-                                echo '<td><a href="index.php/curso/edit/'.$curso->id.'"><img class="botones" src="images/style/edit.png"></a></td>';    
+                            <?php if(empty($usuario->admin) && !empty($usuario))
+                                echo '<td><a href="index.php/curso/preinscribir/'.$curso->id.'"><img class="botones" src="images/style/edit.png"></a></td>';    
                             }?>	
                         </tr>
 

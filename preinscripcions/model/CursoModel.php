@@ -2,7 +2,7 @@
 	class CursoModel{
 		//PROPIEDADES
 		public $id, $nombre='', $horas=0, $inicio='', $tipologia='', $area_formativa='', $precio=0, $activo=1;		
-			
+		public $usupre = array();
 		//METODOS
 		//guarda el curso en la BDD
 		public function guardar(){			
@@ -36,8 +36,11 @@
             $cursos = array();//preparo el array para los resultados
             
             //a partir de los resultados, crear objetos 'CursoModel' y los añadimos en el array
-            while ($curso = $resultados->fetch_object('CursoModel'))                
-                $cursos[] = $curso;                   
+            while ($curso = $resultados->fetch_object('CursoModel')){            	
+            	//$curso->getUsuariosPre();
+            	$cursos[] = $curso;            	
+            }
+                //$cursos[] = $curso;                   
             
             $resultados->free();
             //echo '<pre>';
@@ -45,6 +48,41 @@
             //echo '</pre>';
             return $cursos;
 			
+		}
+		
+		//listado de un curso con sus preinscripciones
+		public static function getCurso($id=0){
+			$consulta = "SELECT * FROM cursos WHERE id=$id;";		
+			$resultados = Database::get()->query($consulta);		
+		
+			//a partir de los resultados, crear objetos 'CursoModel' y los añadimos en el array
+			$curso = $resultados->fetch_object('CursoModel');
+			$curso->getUsuariosPre();				
+			//$cursos[] = $curso;
+		
+			$resultados->free();
+			//echo '<pre>';
+			//print_r($curso);
+			//echo '</pre>';
+			return $curso;
+				
+		}
+		private function getUsuariosPre(){
+					
+			//preparar consulta
+			$consulta = "SELECT u.* FROM usuarios u, preinscripciones p, cursos c 
+			WHERE u.id=p.id_usuario AND p.id_curso=c.id AND c.id=$this->id ORDER BY p.timestamp ASC;";
+			
+			$resultados = Database::get()->query($consulta);
+			
+			//$portadas = array();
+			while($linea = $resultados->fetch_object('UsuarioModel'))
+			{
+				$this->usupre[] = $linea;
+			}			
+			$resultados->free();
+			
+			//return $portadas;
 		}
         //borrar un curos
 		public static function borrar($id){
@@ -56,17 +94,13 @@
 			$conexion->query($consulta);
 			return $conexion->affected_rows;
 		}
-         //recuperar un curso a partir de un id
-         public static function getCurso($id){
-            //conectar con la bdd
-            $conexion = Database::get();
-
+         //preinscribirse en un curso
+         public static function preinscribir($idc,$idu){
             //preparar consulta
-            $consulta = "SELECT * FROM cursos WHERE id=$id;";  
-            $resultado = $conexion->query($consulta);  
-            $curso = $resultado->fetch_object('CursoModel'); 
-            $resultado->free();
-            return $curso;
+            $consulta = "INSERT INTO preinscripciones (id_curso, id_usuario,timestamp) VALUES
+            		($idc,$idu,default);"; 
+            
+            return Database::get()->query($consulta);
         }
 	}
 ?>
