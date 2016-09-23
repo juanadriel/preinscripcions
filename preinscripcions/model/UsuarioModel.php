@@ -53,7 +53,7 @@
             			AND p.id_curso = c.id AND  u.id= p.id_usuario AND c.activo = 1 ORDER BY p.timestamp ASC;";
            
             $resultados = $conexion->query($consulta);   
-            
+            $cursos = array();
             while ($curso = $resultados->fetch_object('CursoModel'))
             	$cursos[] = $curso;
             

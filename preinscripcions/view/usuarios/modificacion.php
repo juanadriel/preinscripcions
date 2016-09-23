@@ -37,7 +37,7 @@
                         <h3>Dades de registre:</h3>
                         <div class=row>
 	                        <figure class="col-md-2">
-	                            <img class="imagenactual imgthumbnail" src="<?php echo $usuario->imagen;?>" 
+	                            <img class="imagenactual img-thumbnail" src="<?php echo $usuario->imagen;?>" 
 	                                alt="<?php echo  $usuario->dni;?>" />
 	                        </figure>
 	                        <div class="col-md-10">
