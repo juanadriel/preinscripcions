@@ -17,7 +17,7 @@
 		
 		<section id="content" class="container">
 			<h2>Llistat de cursos</h2>
-			<div class="row">
+			<div class="row quitarmargen">
                 <form method="post" class="filtro form-inline">
                     <div class="form-group">
                         <label for="fcurso">Curs</label>
@@ -63,7 +63,7 @@
                 <br/>		
             </div>
             
-            <div class="row">
+            <div class="row quitarmargen">
                 <div class="table-responsive">
                     <table class="table table-striped table-bordered table-hover">
                     <tr class="info">	               

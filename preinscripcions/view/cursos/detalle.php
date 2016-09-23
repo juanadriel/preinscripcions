@@ -17,7 +17,7 @@
 		
 		<section id="content" class="container">
 			<h2>Preinscripcions del curs  <?php echo $curso->nombre?></h2>
-			<div class="row">
+			<div class="row quitarmargen">
 				<div class="table-responsive">
                     <table class="table table-striped table-bordered table-hover">
                     <tr class="info">	               
@@ -45,7 +45,7 @@
                 </div>
             </div>
             <h2>Preinscripcions del curs  <?php echo $curso->nombre?></h2>
-			<div class="row">
+			<div class="row quitarmargen">
 				<div class="table-responsive">
 					<table class="table table-striped table-bordered table-hover">
 						<tr class="info">
