@@ -3,7 +3,7 @@
 		//PROPIEDADES
 		public $id, $nombre='', $horas=0, $inicio='', $tipologia='', $area_formativa='', $precio=0, $activo=1;		
 		public $usupre = array();
-		//METODOS
+		//METODOS//
 		//guarda el curso en la BDD
 		public function guardar(){			
 			$consulta = "INSERT INTO cursos(id, nombre, horas, inicio, tipologia, area_formativa, precio, activo)
