@@ -55,7 +55,7 @@
             $resultados = $conexion->query($consulta);   
             
             //$portadas = array();
-            $linea = $resultados->fetch_array();
+            $linea = $resultados->fetch_object(CursoModel);
             
             $resultados->free();
 			
