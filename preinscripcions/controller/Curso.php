@@ -162,6 +162,7 @@
         	$datos['curso']=CursoModel::getCurso($id);
         	$this->load_view('view/cursos/detalle.php',$datos);
         }
+        //procedimiento para preinscribir a los usuarios en un curso
         public function preinscribir($id){       	
         		$u = Login::getUsuario();
         		if($u->activo == 1)
@@ -176,8 +177,19 @@
        			$datos['mensaje'] = 'Preinscripció realitzada amb éxit';
        			$this->load_view('view/exito.php', $datos);       	
         		
+        }
+        public function desinscribir($cid){
+        	$u = Login::getUsuario();
+        	if($u == null)
+        		throw new Exception("Has d'estar registrat per continuar.");
         	
+        	if(!CursoModel::desinscribir($cid, $u->id))
+        		throw new Exception("No s'ha pogut eliminar la preinscripció");
         	
+        	$datos = array();
+        	$datos['usuario'] = Login::getUsuario();
+        	$datos['mensaje'] = 'Preinscripció eliminada correctament';
+        	$this->load_view('view/exito.php', $datos);
         }
 	}//fin clase
 ?>

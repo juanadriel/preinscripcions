@@ -228,10 +228,7 @@
                         <input type="hidden" name="MAX_FILE_SIZE" value="<?php echo $max_image_size;?>" />		
                         <input type="file" accept="image/*" name="imagen" />
                         <span class="mini">max <?php echo intval($max_image_size/1024);?>kb</span><br />
-
-                        <label></label>
-                        <input type="submit" name="modificar" value="modificar"/><br/>
-                                            
+                                           
                     </div>
                     <div id="menu4" class="tab-pane fade">
                     <h2>Este es el bueno</h2>
@@ -245,21 +242,22 @@
 				                       <th>Tipologia</th>	               
 				                       <th>Àrea Formativa</th>
 				                       <th>Preu</th>
+				                       <th>Desinscriure's</th>
 				                     </tr>	
-							        <?php 			                    	
-									for($i=0; $i <count($preinscripciones); $i++){
-								                    	
+							        <?php 
+							        	
+										foreach($preinscripciones as $preinscripcion){           	
 							         ?>
 			                        <tr>
-			                            <td><?php echo $preinscripciones[$i]->nombre;?></td>	                    
-			                            <td><?php echo $preinscripciones[$i]->horas;?></td>
-			                            <td><?php echo $preinscripciones[$i]->inicio;?></td>                     
-			                            <td><?php echo $preinscripciones[$i]->tipologia;?></td>                     
-			                            <td><?php echo $preinscripciones[$i]->area_formativa;?></td>                     
-			                            <td><?php echo $preinscripciones[$i]->precio;?></td>
-			                                                 
+			                            <td><?php echo $preinscripcion->nombre;?></td>	                    
+			                            <td><?php echo $preinscripcion->horas;?></td>
+			                            <td><?php echo $preinscripcion->inicio;?></td>                     
+			                            <td><?php echo $preinscripcion->tipologia;?></td>                     
+			                            <td><?php echo $preinscripcion->area_formativa;?></td>                     
+			                            <td><?php echo $preinscripcion->precio;?></td>
+			                            <td><?php echo '<a href="index.php/curso/desinscribir/'.$preinscripcion->id.'"><img class="botones" src="images/style/delete.png"></a>'?>                    
 		                            <?php			                    		
-			                    	}			                    
+			                    		}			                    
 		                    		?>	
 			                        </tr>
 			
@@ -267,6 +265,8 @@
 			                </div>
 			            </div>
                     </div>
+                    <label></label>
+                        <input type="submit" name="modificar" value="modificar"/><br/>
                 </form>
              
 				

@@ -49,7 +49,14 @@
             return $cursos;
 			
 		}
-		
+		public static function desinscribir($idc, $idu){
+			$consulta = "DELETE FROM preinscripciones WHERE id_curso = $idc AND id_usuario = $idu;";
+			$conexion = Database::get();
+			$conexion->query($consulta);
+			
+			return $conexion->affected_rows;
+					
+		}
 		//listado de un curso con sus preinscripciones
 		public static function getCurso($id=0){
 			$consulta = "SELECT * FROM cursos WHERE id=$id;";		
