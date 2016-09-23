@@ -178,6 +178,9 @@
        			$this->load_view('view/exito.php', $datos);       	
         		
         }
+        
+        //PROCEDIMIENTO PARA DESINSCRIBIR A LOS USUARIOS DE UN CURSO
+        
         public function desinscribir($cid){
         	$u = Login::getUsuario();
         	if($u == null)

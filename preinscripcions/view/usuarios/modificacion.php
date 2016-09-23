@@ -159,7 +159,7 @@
                                     <option <?php if(strcmp($usuario->nivel_estudios, 'Altres') ==0) echo 'selected="selected"';?> value="Altres">Altres</option>
                                 </select>
                             </div>
-                        </div>
+                         </div>
 
                         <div class="form-group">
                             <label for="nombre_titulacion" class="col-md-2 control-label">Nom de la titulació</label>
