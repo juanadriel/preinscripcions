@@ -35,18 +35,11 @@
                         <label for="farea">Àrea</label>
                         <select id="farea" name="farea" class="form-control" value="<?php echo $farea;?>" placeholder="Àrea">
                                 <option <?php if(!strcmp($farea,"")) echo "selected ='selected'";?> value="">Totes</option>
-                                <option <?php if(!strcmp($farea,"Activitats físiques i espotives")) echo "selected ='selected'";?> value="Activitats físiques i espotives">Activitats físiques i espotives</option>
-                                <option <?php if(!strcmp($farea,"Administració i gestió")) echo "selected ='selected'";?> value="Administració i gestió">Administració i gestió</option>
-                                <option <?php if(!strcmp($farea,"Agrària")) echo "selected ='selected'";?> value="Agrària">Agrària</option>
-                                <option <?php if(!strcmp($farea,"Arts gràfiques")) echo "selected ='selected'";?> value="Arts gràfiques">Arts gràfiques</option>
-                                <option <?php if(!strcmp($farea,"Arts i artesania")) echo "selected ='selected'";?> value="Arts i artesania">Arts i artesania</option>
-                                <option <?php if(!strcmp($farea,"Comerç i màrqueting")) echo "selected ='selected'";?> value="Comerç i màrqueting">Comerç i màrqueting</option>
-                                <option <?php if(!strcmp($farea,"Edificació i obra civil")) echo "selected ='selected'";?> value="Edificació i obra civil">Edificació i obra civil</option>
-                                <option <?php if(!strcmp($farea,"Electricitat i electrònica")) echo "selected ='selected'";?> value="Electricitat i electònica">Electricitat i electrònica</option>
-                                <option <?php if(!strcmp($farea,"Energia i aigua")) echo "selected ='selected'";?> value="Energia i aigua">Energia i aigua</option>
-                                <option <?php if(!strcmp($farea,"Fabricació mecànica")) echo "selected ='selected'";?> value="Fabricació mecànica">Fabricació mecànica</option>
-                                <option <?php if(!strcmp($farea,"Informàtica i comunicacions")) echo "selected ='selected'";?> value="Informàtica i comunicacions">Informàtica i comunicacions</option>
-                        </select>  
+                                <option <?php if(!strcmp($farea,"Administració")) echo "selected ='selected'";?> value="Administració">Administració</option>
+                                <option <?php if(!strcmp($farea,"Habilitats interpersonals")) echo "selected ='selected'";?> value="Habilitats interpersonals">Habilitats interpersonals</option>
+                                <option <?php if(!strcmp($farea,"Informàtica / Noves tecnologies")) echo "selected ='selected'";?> value="Informàtica / Noves tecnologies">Informàtica / Noves tecnologies</option>
+                                <option <?php if(!strcmp($farea,"Sociosanitàries")) echo "selected ='selected'";?> value="Sociosanitàries">Sociosanitàries</option>
+                        </select> 
                     </div>		
 
                     <div class="form-group">
@@ -95,14 +88,14 @@
                     foreach($cursos as $curso){
                         ?>
                         <tr>
-                            <td><?php echo $curso->nombre;?></td>	                    
-                            <td><?php echo $curso->horas;?></td>
-                            <td><?php echo $curso->inicio;?></td>                     
-                            <td><?php echo $curso->tipologia;?></td>                     
-                            <td><?php echo $curso->area_formativa;?></td>                     
-                            <td><?php echo $curso->precio;?></td> 
+                            <td class="<?php echo ($curso->activo)?'success':'danger';?>"><?php echo $curso->nombre;?></td>	                    
+                            <td class="<?php echo ($curso->activo)?'success':'danger';?>"><?php echo $curso->horas;?></td>
+                            <td class="<?php echo ($curso->activo)?'success':'danger';?>"><?php echo $curso->inicio;?></td>                     
+                            <td class="<?php echo ($curso->activo)?'success':'danger';?>"><?php echo $curso->tipologia;?></td>                     
+                            <td class="<?php echo ($curso->activo)?'success':'danger';?>"><?php echo $curso->area_formativa;?></td>                    
+                            <td class="<?php echo ($curso->activo)?'success':'danger';?>"><?php echo $curso->precio;?></td>  
                             <?php 
-                            	$foto = ($curso->activo)?'abierto.png':'cerrado.png';
+                            	$foto = ($curso->activo)?'abierto.png':'cerrado.png';                            	
                             	echo '<td><img class="botones" src="images/style/'.$foto.'"></td>';
                             ?>  
                             <?php if(!empty($usuario) && $usuario->admin){
@@ -113,7 +106,7 @@
                                 echo '<td><a href="index.php/curso/preinscribir/'.$curso->id.'"><img class="botones" src="images/style/edit.png"></a></td>';    
                             }?>	
                         </tr>
-
+						 
                     </table>
                 </div>
             </div>

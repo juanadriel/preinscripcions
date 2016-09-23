@@ -164,18 +164,16 @@
         }
         public function preinscribir($id){       	
         		$u = Login::getUsuario();
-        		if($u == null)
-        			throw new Exception("Només usuaris registrats poden fer la preinscripció.");
         		if($u->activo == 1)
         			throw new Exception("registre d'usuari incomplet, si vols inscriure't completa les dades d'usuari.");        			 
-        		if(CursoModel::preinscribir($id,$u->id));
+        		
+        		if(!CursoModel::preinscribir($id,$u->id))
         			throw new Exception('Error al fer la preinscripció');
         			
         		$datos = array();
         		//usuario activo en el sistema
-        		$datos['usuario'] = Login::getUsuario();       			
-       			//$datos['ftipologia'] = $ftipologia;
-       			$datos['cursos'] = CursoModel::getCursos();       			
+        		$datos['usuario'] = Login::getUsuario();        			
+       			$datos['mensaje'] = 'Preinscripció realitzada amb éxit';
        			$this->load_view('view/exito.php', $datos);       	
         		
         	

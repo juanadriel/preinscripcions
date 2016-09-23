@@ -99,7 +99,7 @@
             //preparar consulta
             $consulta = "INSERT INTO preinscripciones (id_curso, id_usuario,timestamp) VALUES
             		($idc,$idu,default);"; 
-            
+           
             return Database::get()->query($consulta);
         }
 	}

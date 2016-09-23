@@ -52,19 +52,27 @@
 							<th>Nom</th>
 							<th>Cognoms</th>
 							<th>DNI</th>
-							<th>Població<th>
+							<th>Poblacio</th>
 							<th>Telf Mòbil</th>
 							<th>Telf Fixe</th>
 							<th>Email</th>
 							<th>Situació</th>							
-						</tr>
-						<pre>
-							<?php print_r($curso);?>
-						</pre>
+						</tr>						
 						<?php 							
 							foreach($curso->usupre as $usu){
 								echo '<tr>';								
-									
+									echo "<td>$usu->nombre</td>";
+									echo "<td>".$usu->apellido1.' '.$usu->apellido2."</td>";
+									echo "<td>$usu->dni</td>";
+									echo "<td>$usu->poblacion</td>";
+									echo "<td>$usu->telf_movil</td>";
+									echo "<td>$usu->telf_fijo</td>";
+									echo "<td>$usu->email</td>";
+									if($usu->en_activo)
+										echo "<td>En Actiu</td>";
+									else 
+										echo "<td>A l'Atur</td>";
+									//echo '<td>'.($usu->en_activo==1)?'En actiu':"A atur".'</td>';
 								echo '</tr>';
 							}	
 						?>						

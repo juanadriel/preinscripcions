@@ -67,17 +67,10 @@
                         <label for="area_formativa" class="col-md-2 control-label">Àrea formativa:</label>
                         <div class="col-md-3">
                             <select id="area_formativa" name="area_formativa" class="form-control">                                   
-                                    <option value="Activitats físiques i espotives">Activitats físiques i esportives</option>
-                                    <option value="Administració i gestió">Administració i gestió</option>
-                                    <option value="Agrària">Agrària</option>
-                                    <option value="Arts gràfiques">Arts gràfiques</option>
-                                    <option value="Arts i artesania">Arts i artesania</option>
-                                    <option value="Comerç i màrqueting">Comerç i màrqueting</option>
-                                    <option value="Edificació i obra civil">Edificació i obra civil</option>
-                                    <option value="Electricitat i electònica">Electricitat i electrònica</option>
-                                    <option value="Energia i aigua">Energia i aigua</option>
-                                    <option value="Fabricació mecànica">Fabricació mecànica</option>
-                                    <option value="Informàtica i comunicacions">Informàtica i comunicacions</option>
+                            	<option value="Administració">Administració</option>
+                                <option value="Habilitats interpersonals">Habilitats interpersonals</option>
+                                <option value="Informàtica / Noves tecnologies">Informàtica / Noves tecnologies</option>
+                                <option value="Sociosanitàries">Sociosanitàries</option>
                             </select>  
                         </div>
                     </div>		
