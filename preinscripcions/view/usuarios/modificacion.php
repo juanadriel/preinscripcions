@@ -228,10 +228,7 @@
                         <input type="hidden" name="MAX_FILE_SIZE" value="<?php echo $max_image_size;?>" />		
                         <input type="file" accept="image/*" name="imagen" />
                         <span class="mini">max <?php echo intval($max_image_size/1024);?>kb</span><br />
-
-                        <label></label>
-                        <input type="submit" name="modificar" value="modificar"/><br/>
-                                            
+                                           
                     </div>
                     <div id="menu4" class="tab-pane fade">
                     <h2>Este es el bueno</h2>
@@ -268,6 +265,8 @@
 			                </div>
 			            </div>
                     </div>
+                    <label></label>
+                        <input type="submit" name="modificar" value="modificar"/><br/>
                 </form>
              
 				

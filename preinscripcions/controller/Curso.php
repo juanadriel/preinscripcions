@@ -184,7 +184,9 @@
         	$u = Login::getUsuario();
         	if($u == null)
         		throw new Exception("Has d'estar registrat per continuar.");
-        	CursoModel::desinscribir($cid, $u->id);
+        	
+        	if(!CursoModel::desinscribir($cid, $u->id))
+        		throw new Exception("No s'ha pogut eliminar la preinscripció");
         	
         	$datos = array();
         	$datos['usuario'] = Login::getUsuario();
