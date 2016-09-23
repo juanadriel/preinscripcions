@@ -49,17 +49,17 @@
         public static function getPreinscripciones($id){            
             $conexion = Database::get();                        
             
-            $consulta = "SELECT c.* FROM cursos c, preinscripciones p, usuarios u 
-			WHERE u.id = $id AND p.id_curso = c.id AND  u.id= p.id_usuario ORDER BY p.timestamp ASC;";
+            $consulta = "SELECT c.* FROM cursos c, preinscripciones p, usuarios u WHERE u.id = $id 
+            			AND p.id_curso = c.id AND  u.id= p.id_usuario AND c.activo = 1 ORDER BY p.timestamp ASC;";
            
             $resultados = $conexion->query($consulta);   
             
-            //$portadas = array();
-            $linea = $resultados->fetch_object(CursoModel);
+            while ($curso = $resultados->fetch_object('CursoModel'))
+            	$cursos[] = $curso;
             
             $resultados->free();
 			
-            return $linea;
+            return $cursos;
             //return $portadas;
         }
         

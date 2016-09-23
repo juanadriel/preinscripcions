@@ -245,21 +245,22 @@
 				                       <th>Tipologia</th>	               
 				                       <th>Àrea Formativa</th>
 				                       <th>Preu</th>
+				                       <th>Desinscriure's</th>
 				                     </tr>	
-							        <?php 			                    	
-									for($i=0; $i <count($preinscripciones); $i++){
-								                    	
+							        <?php 
+							        	
+										foreach($preinscripciones as $preinscripcion){           	
 							         ?>
 			                        <tr>
-			                            <td><?php echo $preinscripciones[$i]->nombre;?></td>	                    
-			                            <td><?php echo $preinscripciones[$i]->horas;?></td>
-			                            <td><?php echo $preinscripciones[$i]->inicio;?></td>                     
-			                            <td><?php echo $preinscripciones[$i]->tipologia;?></td>                     
-			                            <td><?php echo $preinscripciones[$i]->area_formativa;?></td>                     
-			                            <td><?php echo $preinscripciones[$i]->precio;?></td>
-			                                                 
+			                            <td><?php echo $preinscripcion->nombre;?></td>	                    
+			                            <td><?php echo $preinscripcion->horas;?></td>
+			                            <td><?php echo $preinscripcion->inicio;?></td>                     
+			                            <td><?php echo $preinscripcion->tipologia;?></td>                     
+			                            <td><?php echo $preinscripcion->area_formativa;?></td>                     
+			                            <td><?php echo $preinscripcion->precio;?></td>
+			                            <td><?php echo '<a href="index.php/curso/desinscribir/'.$preinscripcion->id.'"><img class="botones" src="images/style/delete.png"></a>'?>                    
 		                            <?php			                    		
-			                    	}			                    
+			                    		}			                    
 		                    		?>	
 			                        </tr>
 			
